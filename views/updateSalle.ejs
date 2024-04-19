@@ -1,0 +1,145 @@
+<%- include('parts/top.ejs')%>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+        
+
+<div class="container">
+    <form method="POST" action="/mySalles/update"  enctype="multipart/form-data">
+        <div class="form-group">
+          <label >Salle</label>
+          <input type="text" class="form-control" name="name" value="<%=SalleUpdate.name%>">
+        </div>
+        <div class="form-group">
+            <label >Capaciter</label>
+            <input type="number" class="form-control" name="capacity" value="<%= SalleUpdate.capacity%>"> 
+              
+            
+        </div>
+        <div class="form-group">
+            <label >Equipements</label>
+            <ol>
+              
+                
+              
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="climatisation" name="facilities[]" value="Climatisation" >
+                        <label class="form-check-label" for="climatisation">Climatisation</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input"  type="checkbox" id="videoprojecteur" name="facilities[]" value="Vidéoprojecteur" >
+                        <label class="form-check-label" for="videoprojecteur">Vidéoprojecteur</label>
+                    </div><div class="form-check form-check-inline">
+                      <input class="form-check-input"  type="checkbox" id="Haut-parleur" name="facilities[]" value="Haut-parleur" >
+                      <label class="form-check-label" for="Haut-parleur">Haut-parleur</label>
+                  </div>
+               
+            </ol>
+            
+            
+        </div>
+        <div class="form-group">
+          <label>Disponibilité :</label>
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="lundi" name="availability[]" value="Lundi">
+              <label class="form-check-label" for="lundi">Lundi</label>
+          </div>
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="mardi" name="availability[]" value="Mardi">
+              <label class="form-check-label" for="mardi">Mardi</label>
+          </div>
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="Mercredi" name="availability[]" value="Jeudi">
+              <label class="form-check-label" for="Mercredi">Mercredi</label>
+          </div>
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="Jeudi" name="availability[]" value="Jeudi">
+              <label class="form-check-label" for="Jeudi">Jeudi</label>
+          </div>
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="Vendredi" name="availability[]" value="Vendredi">
+              <label class="form-check-label" for="Vendredi">Vendredi</label>
+          </div>
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="Samedi" name="availability[]" value="Samedi">
+              <label class="form-check-label" for="Samedi">Samedi</label>
+          </div>
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="Dimanche" name="availability[]" value="Dimanche" disabled>
+              <label class="form-check-label" for="Dimanche">Dimanche</label>
+          </div>
+        
+              
+            
+          
+      </div>
+        
+          
+          
+      
+        <input type="hidden" name="salleId" value="<%= SalleUpdate._id %>">
+       
+        <div class="form-group">
+            <label >Price</label>
+            <input type="number" class="form-control" name="prix_heure" value="<%=SalleUpdate.prix_heure%>">
+          </div>
+
+          <img src="/uploads/<%=SalleUpdate.image%>" width="100" height="100" >
+
+          <input type="hidden" name="oldImage" value="<%= SalleUpdate.image%>">
+          <div class="form-group">
+            <label >Image</label>
+            <input type="file" name="image"  class="form-control" >
+          </div>
+          <% if (Smessage) {%>
+            <div class="alert alert-success">
+              <%= Smessage %>
+  
+            </div>
+  
+            <% } %>
+            <% if (Emessage) {%>
+              <div class="alert alert-danger">
+                <%= Emessage %>
+    
+              </div>
+    
+              <% } %>
+        <button type="submit" class="btn btn-primary">Update</button>
+      </form>
+
+        <!-- Modal Logout -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to logout?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+        <a href="/" class="btn btn-primary">Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+  
+
+
+
+</div>
+
+<%- include('parts/bottom.ejs')%>

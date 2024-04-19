@@ -1,0 +1,91 @@
+<%- include('parts/top.ejs')%>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <img src="/uploads/<%= salle.image%>" alt="">
+      </div>
+      <div class="col">
+        <h1><%= salle.name %></h1><h4><%= salle.prix_heure %>  DTN</h4>
+        <span><%= salle.capacity %></span>
+       
+
+        <ul class="container">
+          <h3>Equipements</h3>
+          <% for (let equi of salle.facilities) {%>
+          <li><i ><%=equi%></i></li>
+          <% } %> 
+        </ul>
+        <!--<ul class="container">
+          <h3>Disponibilité:</h3>
+          <% for (let av of salle.availability) {%>
+          <li><i ><%=av%></i></li>
+          <% } %> 
+        </ul>-->
+        <a href="/reservation/addReservation/<%=salle._id%>/<%=salle.name%>" class="btn btn-primary">Reserver</a>
+      </div>
+    </div>
+    <div class="col">
+      <div id="calendar">
+        <h3>Disponibilité:</h3>
+        <table class="table table-dark">
+          <thead>
+            <tr>
+              <% for (let day of salle.availability) { %>
+                <th scope="col"><%= day %></th>
+              <% } %>
+            </tr>
+          </thead>
+          <tbody>
+            <% for (let reservation of dates) { %>
+              <tr>
+                
+                <% for (let day of salle.availability) { %>
+                  <td>
+                  <% if (day === days[reservation.dateARes.getDay()]) { %>
+                    <p><%= reservation.dateARes.toDateString() %> -<%= reservation.heureDebut %> - <%= reservation.heureFin %></p>
+                  <% } else { %>
+                   <p>disponible</p>
+                  <% } %>
+                  </td>
+                <% } %>
+                
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+        
+       
+      </div>
+
+   
+  </div>
+</div>
+  
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+
+<%-include('parts/bottom.ejs')%>
+

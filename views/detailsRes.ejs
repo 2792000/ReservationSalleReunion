@@ -1,0 +1,42 @@
+<%- include('parts/top.ejs')%>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+      
+      <div class="col">
+        <h1><%= Reservation.userId.name %></h1><h4><%= Reservation.salleId.name %> </h4>
+        
+       
+
+        <ul class="stars">
+            <li>Date de début : <%= Reservation.dateDebut.toDateString() %></li>
+            <li>Date de fin : <%= Reservation.dateFin.toDateString() %></li>
+           <li>Numbre d'Heures : <%=Reservation.Nheure%></li>
+        </ul>
+
+
+        <a href="/myReservation/delete/<%=Reservation._id%>" class="btn btn-danger">Delete</a>
+        <a href="/myReservation/update/<%=Reservation._id%>" class="btn btn-primary">update</a>
+      </div>
+    </div>
+</div>
+  
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<%-include('parts/bottom.ejs')%>

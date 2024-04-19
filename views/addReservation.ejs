@@ -1,0 +1,52 @@
+<%- include('parts/top.ejs')%>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<div class="container">
+    <form method="POST" action="/reservation/addReservation/<%= salleId %>"  enctype="multipart/form-data">
+        <div class="form-group">
+          <label >Salle </label>
+          <input type="text" class="form-control" name="name" value="<%= name %>" disabled>
+          <input type="hidden" class="form-control" name="salleId" value="<%= salleId %>" >
+        </div>
+        <!--<div class="form-group">
+            <label >date debut</label>
+            <input type="date" class="form-control" name="dateDebut" id="dateDebut">
+        </div>-->
+        <div class="form-group">
+            <label >Date De Reservation</label>
+            <input type="date" class="form-control" name="dateARse" id="dateARse">
+        </div>
+        <div class="form-group">
+            <label >Heures de debut</label>
+            <input type="time" class="form-control" name="heureDebut" id="heureDebut">
+          </div>
+          <div class="form-group">
+            <label >Heures de Fin</label>
+            <input type="time" class="form-control" name="heureFin" id="heureFin">
+          </div>
+          <% if (Smessage) {%>
+          <div class="alert alert-success">
+            <%= Smessage %>
+
+          </div>
+
+          <% } %>
+          <% if (Emessage) {%>
+            <div class="alert alert-danger">
+              <%= Emessage %>
+  
+            </div>
+  
+            <% } %>
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+</div>
+  
+
+
+<%- include('parts/bottom.ejs')%>

@@ -1,0 +1,61 @@
+<%- include('parts/top.ejs')%>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<div class="container">
+    <form method="POST" action="/myReservation/update"  enctype="multipart/form-data">
+        <div class="form-group">
+            <label>Salle </label>
+            <input type="text" class="form-control" name="sallename" value="<%= reservationUpdate.salleId.name %>" disabled>
+            <input type="hidden" name="salleId" value="<%= reservationUpdate.salleId._id %>">
+            <input type="hidden" name="userId" value="<%= reservationUpdate.userId._id %>">
+        </div>
+
+        <div class="form-group">
+            <label>Reserver par </label>
+            <input type="text" class="form-control" name="username" id="username" value="<%=reservationUpdate.userId.name %>" disabled>
+        </div>
+        <div class="form-group">
+            <label>Date De Reservation</label>
+            <input type="date" class="form-control" name="dateARes" id="dateARes" value="<%=reservationUpdate.dateARes %>" required>
+        </div>
+       
+        <div class="form-group">
+            <label>Heures de Debut</label>
+            <input type="time" class="form-control" name="heureDebut" id="heureDebut" value="<%=reservationUpdate.heureDebut%>" required>
+        </div>
+        <div class="form-group">
+            <label>Heures de Debut</label>
+            <input type="time" class="form-control" name="heureFin" id="heureFin" value="<%=reservationUpdate.heureFin%>" required>
+        </div>
+        <input type="hidden" name="reservationId" value="<%= reservationUpdate._id %>">
+        <input type="hidden" name="dateDeRse" value="<%= reservationUpdate.dateDeRse %>">
+        <% if (Smessage) {%>
+            <div class="alert alert-success">
+                <%= Smessage %>
+            </div>
+        <% } %>
+        <% if (Emessage) {%>
+            <div class="alert alert-danger">
+                <%= Emessage %>
+            </div>
+        <% } %>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>
+  
+<%- include('parts/bottom.ejs')%>
+
+<script>
+    // Remplir automatiquement les champs de date avec la date actuelle
+    document.addEventListener('DOMContentLoaded', function() {
+        const dateDebutInput = document.getElementById('dateARes');
+        const today = new Date().toISOString().split('T')[0]; // Récupérer la date actuelle au format ISO
+        dateDebutInput.value = today;
+        dateFinInput.value = today;
+    });
+</script>
