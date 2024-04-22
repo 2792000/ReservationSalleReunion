@@ -42,12 +42,12 @@ exports.getOneSalleDetailsController = (req, res, next) => {
                 verifUser: req.session.userId
             });
         }).catch(err => {
-            // Gérer les erreurs ici
+           
             console.error(err);
             next(err);
         });
     }).catch(err => {
-        // Gérer les erreurs ici
+     
         console.error(err);
         next(err);
     });

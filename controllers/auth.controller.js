@@ -30,7 +30,7 @@ exports.postLoginData=(req,res,next)=>{
     authModel.loginFunctionModel(req.body.email,req.body.password).then((user)=>{
         if(user.role=="admin"){
             req.session.userId=user.id
-            req.session.userName=user.name
+            
             res.redirect('/table')
         }else{
             req.session.userId=user.id
